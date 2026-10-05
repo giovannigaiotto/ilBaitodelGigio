@@ -89,18 +89,4 @@
     items.forEach(function (el) { io.observe(el); });
   })();
 
-  /* ------------------------------------------------------- missing photos
-     A photo that is not in the repository yet leaves a quiet placeholder
-     instead of a broken-image icon.                                       */
-  $$('.shot').forEach(function (img) {
-    var fail = function () {
-      var bezel = img.parentNode;
-      if (bezel) bezel.classList.add('is-missing');
-      img.hidden = true;
-    };
-    img.addEventListener('error', fail);
-    // the script is deferred, so a photo may have failed before we got here
-    if (img.complete && img.naturalWidth === 0) fail();
-  });
-
 })();
