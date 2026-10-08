@@ -152,9 +152,8 @@ vengono scaricati da Google: niente chiamate esterne, nessun tracker.
 **Impaginazione.** Sul computer la pagina usa tutta la larghezza dello
 schermo: titolo e presentazione affiancati, elenco dei viaggi in colonne
 come l'indice di un giornale, e nella pagina di un viaggio le sezioni (una
-per ogni `##`) affiancate come i pezzi di una pagina di giornale. Una
-sezione con una foto prende tutta la riga. Sul telefono tutto torna in una
-colonna sola.
+per ogni `##`) affiancate come i pezzi di una pagina di giornale. Sul
+telefono tutto torna in una colonna sola.
 
 **Giorno e notte.** Di base il sito segue il tema del telefono o del
 computer. Il tasto con la luna/il sole lo cambia a mano e la scelta viene

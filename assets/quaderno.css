@@ -202,7 +202,8 @@ button {
 .casa__porta { fill: var(--brace); }
 .casa__nome {
   font-family: var(--macchina);
-  font-size: 1.2rem; line-height: 1;
+  font-size: clamp(1.05rem, 5.2vw, 1.2rem); line-height: 1;
+  white-space: nowrap;
   padding-top: 3px;
 }
 .casa:hover .casa__nome { color: var(--brace); }
@@ -323,12 +324,14 @@ button {
   border-bottom: 3px double var(--inchiostro);
   margin-bottom: clamp(24px, 3.5vw, 44px);
 }
-@media (min-width: 900px) {
+@media (min-width: 56.25em) {
   .apertura { grid-template-columns: auto minmax(18rem, 1fr); }
   .apertura .intro { justify-self: end; }
-  /* nella pagina di un viaggio il titolo prende lo spazio, le date stanno a destra */
-  .viaggio .apertura { grid-template-columns: minmax(0, 1fr) auto; }
+  /* nella pagina di un viaggio il titolo prende tutta la riga, le date sotto */
+  .viaggio .apertura { grid-template-columns: minmax(0, 1fr); }
 }
+/* una parola lunghissima nel titolo va a capo invece di uscire dallo schermo */
+.apertura > * { min-width: 0; }
 
 .titolo {
   margin: 0;
@@ -360,6 +363,10 @@ button {
   letter-spacing: .14em; text-transform: uppercase;
   color: var(--tenue);
   margin-right: 2px;
+}
+/* telefono stretto: l'etichetta va sopra, i tre bottoni restano su una riga */
+@media (max-width: 22.4em) {
+  .ordina__per { flex-basis: 100%; }
 }
 .ordina button {
   position: relative;
@@ -428,7 +435,7 @@ button {
 }
 .indice a:hover .indice__nome { color: var(--brace); }
 
-@media (max-width: 520px) {
+@media (max-width: 32.5em) {
   .indice a { flex-direction: column; gap: 2px; padding: 13px 2px 11px; }
   .indice__punti { display: none; }
 }
@@ -450,9 +457,6 @@ button {
   font-style: italic;
   color: var(--tenue);
 }
-@media (min-width: 900px) {
-  .viaggio__meta { justify-self: end; text-align: right; }
-}
 
 /* il testo scritto in Markdown nei file di _viaggi/, diviso in sezioni
    (una per ogni titolo "##"): sul telefono una sotto l'altra, sullo schermo
@@ -468,13 +472,14 @@ button {
   padding-top: 14px;
   border-top: 2px solid var(--inchiostro);
 }
-/* il testo prima del primo titolo e le sezioni con foto prendono tutta la riga */
+/* il testo prima del primo titolo prende tutta la riga */
 .sezione--apertura { grid-column: 1 / -1; border-top: 0; padding-top: 0; }
 .sezione--apertura > * { max-width: 70ch; }
-.sezione:has(img) { grid-column: 1 / -1; }
 
 .sezione > :first-child { margin-top: 0; }
 .sezione > :last-child { margin-bottom: 0; }
+/* un --- tra due sezioni non serve: ogni sezione ha già la sua riga sopra */
+.sezione > hr:last-child { display: none; }
 
 .testo h2 {
   margin: 0 0 .7em;
@@ -538,9 +543,11 @@ button {
 }
 .testo th:last-child, .testo td:last-child { padding-right: 0; }
 .testo tr:last-child td { border-bottom: 0; }
+.testo td { overflow-wrap: anywhere; }
+/* la colonna dei prezzi (--- : nella tabella) non spezza mai "60,00 €" */
+.testo td[style*="right"] { white-space: nowrap; }
 
 .testo hr {
-  grid-column: 1 / -1;
   margin: 1em 0;
   border: 0;
   border-top: 2px dashed var(--riga-forte);
@@ -549,6 +556,7 @@ button {
 .testo img {
   display: block;
   height: auto;
+  max-height: 85vh;   /* anche una foto verticale si vede tutta */
   margin: 1em 0;
   border-radius: 3px;
   box-shadow: 0 10px 28px -16px var(--ombra);
