@@ -1,0 +1,80 @@
+{%- assign root = page.root | default: "./" -%}
+{%- assign elenco = site.viaggi | sort: "dal" | reverse -%}
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% if page.titolo %}{{ page.titolo }} · {% endif %}{{ site.title }}</title>
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#F4ECDD" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1D1611" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="{{ root }}assets/baito.svg" type="image/svg+xml">
+<link rel="preload" href="{{ root }}assets/fonts/kalam-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="{{ root }}assets/fonts/alegreya-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="{{ root }}assets/quaderno.css">
+<script>
+  /* tema scelto a mano: applicato prima di disegnare, così non lampeggia */
+  try { var t = localStorage.getItem('baito-tema'); if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t); } catch (e) {}
+</script>
+</head>
+<body>
+
+<a class="salta" href="#contenuto">Vai al contenuto</a>
+
+<header class="testata">
+  <a class="casa" href="{{ root }}" aria-label="Home"{% if page.url == "/" %} aria-current="page"{% endif %}>
+    <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <rect class="casa__porta" x="10" y="15" width="4" height="5.5" stroke="none"></rect>
+      <path d="M2.5 11.5 12 3.6l9.5 7.9M5 9.5v11h14v-11M15.6 6.5V3.8h2.3v4.6M10 20.5V15h4v5.5"></path>
+    </svg>
+    <span class="casa__nome">{{ site.title }}</span>
+  </a>
+
+  <button class="tema" id="tema" type="button" hidden>
+    <svg class="tema__luna" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M20 14.6A8.2 8.2 0 1 1 9.4 4a6.6 6.6 0 0 0 10.6 10.6Z"></path>
+    </svg>
+    <svg class="tema__sole" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="4.2"></circle>
+      <path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M18.7 5.3l-1.6 1.6M6.9 17.1l-1.6 1.6"></path>
+    </svg>
+  </button>
+
+  <details class="menu">
+    <summary class="menu__tasto" aria-label="Menu">
+      <span class="menu__righe" aria-hidden="true"><i></i><i></i><i></i></span>
+    </summary>
+    <nav class="tendina" aria-label="Menu">
+      <a class="tendina__home" href="{{ root }}">Home</a>
+
+      <p class="tendina__titolo">Viaggi</p>
+      <ul class="tendina__viaggi">
+        {%- for v in elenco %}
+        <li><a href="{{ root }}{{ v.url | remove_first: '/' }}"{% if v.url == page.url %} aria-current="page"{% endif %}>{{ v.titolo }}</a></li>
+        {%- endfor %}
+      </ul>
+
+      <p class="tendina__titolo">Contatti</p>
+      <ul>
+        {%- if site.contatti.linkedin != "" and site.contatti.linkedin %}
+        <li><a href="{{ site.contatti.linkedin }}" target="_blank" rel="noopener">LinkedIn</a></li>
+        {%- endif %}
+        {%- if site.contatti.instagram != "" and site.contatti.instagram %}
+        <li><a href="{{ site.contatti.instagram }}" target="_blank" rel="noopener">Instagram</a></li>
+        {%- endif %}
+        {%- if site.contatti.email != "" and site.contatti.email %}
+        <li><a href="mailto:{{ site.contatti.email }}">Email</a></li>
+        {%- endif %}
+      </ul>
+    </nav>
+  </details>
+</header>
+
+<main id="contenuto" class="pagina">
+{{ content }}
+</main>
+
+<script src="{{ root }}assets/quaderno.js" defer></script>
+</body>
+</html>

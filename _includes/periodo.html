@@ -1,0 +1,21 @@
+{%- comment -%}
+  "7–9 aprile 2023", "26 luglio – 3 agosto 2026", "28 dicembre 2025 – 3 gennaio 2026"
+  {% include periodo.html dal=inizio al=fine %}   (al è facoltativo)
+{%- endcomment -%}
+{%- assign mesi_lunghi = "gennaio febbraio marzo aprile maggio giugno luglio agosto settembre ottobre novembre dicembre" | split: " " -%}
+{%- assign p_b = include.al | default: include.dal -%}
+{%- assign p_ga = include.dal | date: "%-d" -%}
+{%- assign p_ma = include.dal | date: "%-m" | minus: 1 -%}
+{%- assign p_ya = include.dal | date: "%Y" -%}
+{%- assign p_gb = p_b | date: "%-d" -%}
+{%- assign p_mb = p_b | date: "%-m" | minus: 1 -%}
+{%- assign p_yb = p_b | date: "%Y" -%}
+{%- if p_ya != p_yb -%}
+  {{- p_ga }} {{ mesi_lunghi[p_ma] }} {{ p_ya }} – {{ p_gb }} {{ mesi_lunghi[p_mb] }} {{ p_yb -}}
+{%- elsif p_ma != p_mb -%}
+  {{- p_ga }} {{ mesi_lunghi[p_ma] }} – {{ p_gb }} {{ mesi_lunghi[p_mb] }} {{ p_ya -}}
+{%- elsif p_ga != p_gb -%}
+  {{- p_ga }}–{{ p_gb }} {{ mesi_lunghi[p_ma] }} {{ p_ya -}}
+{%- else -%}
+  {{- p_ga }} {{ mesi_lunghi[p_ma] }} {{ p_ya -}}
+{%- endif -%}

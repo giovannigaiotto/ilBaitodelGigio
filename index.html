@@ -1,103 +1,28 @@
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Giovanni Gaiotto — PLC &amp; HMI Developer</title>
-<meta name="description" content="Giovanni Gaiotto — PLC and HMI developer. The operator side of industrial control systems.">
-<meta name="color-scheme" content="light dark">
+---
+layout: default
+---
+{%- assign elenco = site.viaggi | sort: "dal" | reverse -%}
+<h1 class="titolo">I miei viaggi</h1>
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Giovanni Gaiotto — PLC &amp; HMI Developer">
-<meta property="og:description" content="The screen is where the machine gets understood.">
+<p class="intro">Una raccolta online dei miei viaggi, sia per lavoro che per ferie. Raccolgo aneddoti, tappe e i luoghi che mi sono piaciuti o non mi sono piaciuti, prezzi, consigli e dettagli.</p>
 
-<!-- no tab icon on purpose -->
-<link rel="icon" href="data:,">
+<div class="ordina" id="ordina" role="group" aria-labelledby="ordina-per" hidden>
+  <span class="ordina__per" id="ordina-per">ordina per</span>
+  <button type="button" data-chiave="data" aria-pressed="true">data<span class="ordina__verso" aria-hidden="true"></span></button>
+  <button type="button" data-chiave="durata" aria-pressed="false">durata<span class="ordina__verso" aria-hidden="true"></span></button>
+  <button type="button" data-chiave="nome" aria-pressed="false">nome<span class="ordina__verso" aria-hidden="true"></span></button>
+  <span class="nascosto" id="ordina-stato" aria-live="polite"></span>
+</div>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;0,800;1,400&display=swap" rel="stylesheet">
-
-<link rel="stylesheet" href="assets/style.css">
-</head>
-<body>
-
-<a class="skip" href="#contact">Skip to contact</a>
-
-<header class="nav">
-  <a href="#top" class="nav__brand">Giovanni Gaiotto</a>
-  <button class="theme" id="theme" type="button" aria-label="Switch colour theme">
-    <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round">
-      <circle cx="12" cy="12" r="4.2"></circle>
-      <path d="M12 2.6v2.2M12 19.2v2.2M2.6 12h2.2M19.2 12h2.2M5.4 5.4l1.6 1.6M17 17l1.6 1.6M18.6 5.4L17 7M7 17l-1.6 1.6"></path>
-    </svg>
-  </button>
-</header>
-
-<main id="top">
-
-  <!-- ============================ HERO ============================ -->
-  <section class="hero">
-    <div class="wrap">
-      <p class="kicker reveal">PLC &amp; HMI Developer</p>
-      <h1 class="hero__title reveal">The screen is where the machine gets&nbsp;understood.</h1>
-      <p class="lede reveal">
-        I build the operator side of industrial control systems &mdash; winches, carriages,
-        mobile hydraulics. The machine already knows what is wrong. Whether the operator knows
-        depends entirely on how the screen says it: a crowded interface turns a five-minute
-        fault into a stopped machine, a clear one does the opposite. That is design work,
-        and it is not decoration.
-      </p>
-
-      <div class="varblock reveal">
-        <div class="varblock__head">
-          <span class="varblock__dot" aria-hidden="true"></span>GVL_Toolchain
-          <em>Declaration</em>
-        </div>
-<pre class="varblock__code"><span class="c">(* what I work on, declared the way a machine would declare it *)</span>
-<span class="k">VAR_GLOBAL</span>
-    display  : <span class="k">PANEL</span>      := [EXOR, Weintek, ifm];
-    plc      : <span class="k">CONTROLLER</span> := [Omron, TT-Control, Berghof, Pilz];
-    software : <span class="k">TOOLCHAIN</span>  := [CODESYS, EasyBuilder Pro, CX-Designer];
-    locales  : <span class="k">ARRAY</span>      := [IT, DE, EN];
-<span class="k">END_VAR</span></pre>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================ CONTACT ============================ -->
-  <section id="contact" class="section section--end">
-    <div class="wrap">
-      <h2 class="sec"><span class="sec__idx">01</span><span class="sec__t">Contact</span></h2>
-      <p class="contact__lede">Open to work on control systems, HMI and machine interfaces.</p>
-      <div class="contact__links">
-        <a class="clink" href="https://www.linkedin.com/in/giovanni-gaiotto-353bb0270/" target="_blank" rel="noopener">
-          <span>LinkedIn</span><b>Connect &rarr;</b>
-        </a>
-        <a class="clink" href="mailto:gaiottogiovanni2004@gmail.com">
-          <span>Email</span><b>gaiottogiovanni2004@gmail.com</b>
-        </a>
-      </div>
-    </div>
-  </section>
-
-</main>
-
-<footer class="statusbar">
-  <div class="wrap sb__in">
-    <span class="sb sb--ok"><i aria-hidden="true"></i>0 errors</span>
-    <span class="sb sb--file">giovanni_gaiotto.portfolio</span>
-    <span class="sb sb--push">&copy; <span id="yr">2026</span> Giovanni Gaiotto</span>
-  </div>
-</footer>
-
-<button class="totop" id="totop" type="button" aria-label="Back to top" tabindex="-1" aria-hidden="true">
-  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor"
-       stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-    <path d="M12 19V6M6 12l6-6 6 6"></path>
-  </svg>
-</button>
-
-<script src="assets/hmi.js" defer></script>
-</body>
-</html>
+<ol class="indice" id="viaggi">
+  {%- for v in elenco %}
+  {%- include giorni.html v=v %}
+  <li data-data="{{ dal_s }}" data-durata="{{ giorni }}" data-nome="{{ v.titolo | downcase | escape }}">
+    <a href="{{ v.url | remove_first: '/' }}">
+      <span class="indice__nome">{{ v.titolo }}</span>
+      <span class="indice__punti" aria-hidden="true"></span>
+      <span class="indice__meta"><time datetime="{{ v.dal | date: '%Y-%m-%d' }}">{% include mese.html d=v.dal %}</time> · {{ giorni }} {% if giorni == 1 %}giorno{% else %}giorni{% endif %}</span>
+    </a>
+  </li>
+  {%- endfor %}
+</ol>

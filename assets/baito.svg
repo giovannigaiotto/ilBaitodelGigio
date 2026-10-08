@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <style>
+    .muri { fill: #6B3F24; }
+    .porta { fill: #D2591F; }
+    @media (prefers-color-scheme: dark) { .muri { fill: #EFE4D0; } .porta { fill: #EE8B4E; } }
+  </style>
+  <path class="muri" d="M16 2.5 31 15h-3.6v14.5H4.6V15H1L16 2.5Zm4.6 4.1V2.8h3.6v6.9Z"/>
+  <path class="porta" d="M12.6 29.5v-8.6h6.8v8.6Z"/>
+</svg>
