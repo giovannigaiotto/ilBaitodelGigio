@@ -1,14 +1,20 @@
 ---
-titolo: Città dolente
-dal: 2023-11-14
-tipo: lavoro
+titolo: Progetto Slovenia
+dal: 2025-05-01
+tipo: ferie
 ---
 
 ## Tappe
 
-1. La porta
-2. Il vestibolo
-3. La riva d'Acheronte
+1. Koper
+2. Park Škocjanske jame, Slovenija
+3. Gostišče Mašun
+4. Ljubljana
+5. Prešernov trg
+6. Central Market
+7. Ljubljanski grad
+8. Park Tivoli
+9. 
 
 ## Aneddoti
 
@@ -22,7 +28,7 @@ tipo: lavoro
 
 ## Mi è piaciuto
 
-- Il traghetto puntuale: «Ed ecco verso noi venir per nave / un vecchio, bianco per antico pelo»
+- Il pranzo a base di carne di selvaggina nel ristorante Gostišče Mašun. Ottimi piatti, tipici slavi e anche la particolare carne di Orso!
 
 ## Non mi è piaciuto
 
@@ -44,6 +50,6 @@ tipo: lavoro
 
 ## Dettagli
 
-- **Riunioni:** 3
+- **Riunioni:** 2 call su discord tra amici
 - **Durata:** 14 ore e 15 minuti
-- **Traghettatore:** Caronte
+- **Traghettatore:** I
