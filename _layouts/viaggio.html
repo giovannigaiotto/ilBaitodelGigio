@@ -16,9 +16,14 @@ layout: default
 
   {%- comment -%}
     Ogni titolo "##" apre una sezione: sullo schermo largo le sezioni si
-    affiancano come i pezzi di una pagina di giornale.
+    affiancano come i pezzi di una pagina di giornale. Si divide solo sui
+    titoli a inizio riga: quelli dentro una citazione o un elenco sono
+    rientrati e restano dove sono.
   {%- endcomment -%}
-  {%- assign parti = content | split: "<h2" %}
+  {%- capture a_capo %}
+{% endcapture -%}
+  {%- assign separatore = a_capo | append: "<h2" -%}
+  {%- assign parti = content | prepend: a_capo | split: separatore %}
   <div class="testo">
     {%- for parte in parti -%}
       {%- if forloop.first -%}
