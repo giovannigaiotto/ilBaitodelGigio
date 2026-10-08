@@ -1,5 +1,5 @@
 ---
-titolo: Miglior acque
+titolo: Progetto Svezia
 dal: 2025-03-14
 al: 2025-03-17
 tipo: lavoro
