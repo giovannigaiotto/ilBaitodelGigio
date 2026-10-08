@@ -1,7 +1,7 @@
 ---
-titolo: Folle volo
-dal: 2024-08-03
-al: 2024-08-17
+titolo: Progetto Montenegro
+dal: 2025-08-03
+al: 2025-08-17
 tipo: ferie
 ---
 
