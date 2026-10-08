@@ -1,6 +1,6 @@
 ---
 titolo: Progetto Dubai
-data: 2025-09-07
+dal: 2025-09-07
 tipo: ferie
 ---
 
