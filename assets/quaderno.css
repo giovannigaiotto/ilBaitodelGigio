@@ -236,7 +236,11 @@ button {
   position: absolute; right: 0; top: calc(100% + 8px); z-index: 40;
   width: min(300px, calc(100vw - 2 * var(--margine)));
   max-height: calc(100vh - 90px);
+  max-height: calc(100dvh - 90px);
   overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: var(--cuoio-tenue) transparent;
   padding: 18px 22px 20px;
   border-radius: 8px;
   background: var(--cuoio);
@@ -268,10 +272,19 @@ button {
   letter-spacing: .16em; text-transform: uppercase;
   color: var(--cuoio-tenue);
 }
-.tendina__viaggi {
+/* con tanti viaggi l'elenco scorre da solo e i contatti restano in vista;
+   il margine negativo lascia spazio al contorno del fuoco */
+.tendina .tendina__viaggi {
   max-height: 40vh;
   overflow-y: auto;
+  margin: -5px -6px;
+  padding: 5px 6px;
 }
+/* telefono in orizzontale: troppo basso per due scorrimenti, scorre tutta la tendina */
+@media (max-height: 500px) {
+  .tendina .tendina__viaggi { max-height: none; overflow: visible; }
+}
+.tendina :focus-visible { outline-color: var(--cuoio-testo); }
 
 /* ---------------------------------------------------------------- pagina */
 .pagina {
@@ -412,7 +425,7 @@ button {
 .testo ol > li { position: relative; margin-bottom: .35em; counter-increment: tappa; }
 .testo ol > li::before {
   content: counter(tappa) ".";
-  position: absolute; left: -2em; width: 1.5em;
+  position: absolute; left: -2em; top: .11em; width: 1.5em;
   text-align: right;
   font-family: var(--mano); font-weight: 700;
   color: var(--brace);
@@ -468,6 +481,12 @@ button {
   padding: 1px 5px;
   border-radius: 3px;
   background: var(--carta-2);
+}
+
+/* ------------------------------------------------- contrasto elevato */
+@media (forced-colors: active) {
+  .menu__righe i { background: CanvasText; }
+  .ordina button[aria-pressed="false"] { text-decoration-line: none; }
 }
 
 /* ---------------------------------------------------------------- motion */

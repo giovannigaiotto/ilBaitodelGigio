@@ -40,6 +40,15 @@
     });
 
     if (buio.addEventListener) buio.addEventListener('change', aggiorna);
+
+    // tornando indietro il browser può ridare la pagina com'era: rilegge la scelta
+    window.addEventListener('pageshow', function (e) {
+      if (!e.persisted) return;
+      var t = null;
+      try { t = localStorage.getItem(KEY); } catch (err) { /* navigazione privata */ }
+      if (t === 'light' || t === 'dark') root.setAttribute('data-theme', t);
+      aggiorna();
+    });
     btn.hidden = false;
     aggiorna();
   })();
@@ -57,13 +66,19 @@
     document.addEventListener('click', function (e) {
       if (m.open && !m.contains(e.target)) m.open = false;
     });
-    // …o con Esc, e il fuoco torna sul tasto
+    // …con Esc, e il fuoco torna sul tasto…
     document.addEventListener('keydown', function (e) {
       if (m.open && (e.key === 'Escape' || e.key === 'Esc')) {
         m.open = false;
         tasto.focus();
       }
     });
+    // …uscendo con Tab, così non copre quello che viene dopo…
+    m.addEventListener('focusout', function (e) {
+      if (m.open && e.relatedTarget && !m.contains(e.relatedTarget)) m.open = false;
+    });
+    // …e tornando indietro a questa pagina
+    window.addEventListener('pageshow', function (e) { if (e.persisted) m.open = false; });
   })();
 
   /* ------------------------------------------------------ ordine viaggi */

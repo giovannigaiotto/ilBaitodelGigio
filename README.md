@@ -13,7 +13,8 @@ _includes/               date in italiano e conteggio dei giorni
 assets/quaderno.css      colori, font, impaginazione (giorno e notte)
 assets/quaderno.js       tema giorno/notte, menu, ordine dell'elenco
 assets/fonts/            Kalam e Alegreya, con la loro licenza (SIL OFL)
-assets/baito.svg         l'icona della linguetta del browser
+assets/baito.svg         l'icona nella scheda del browser
+assets/foto/              le foto dei viaggi
 ```
 
 I cinque viaggi che ci sono adesso sono segnaposto: nomi e testi dalla
@@ -30,7 +31,7 @@ numeri e trattini.
 
 ```markdown
 ---
-titolo: Dolomiti
+titolo: "Dolomiti"
 dal: 2026-09-12
 al: 2026-09-15
 tipo: ferie
@@ -65,27 +66,35 @@ Testo libero.
 
 ## Consigli
 
-- …
+- Prenotare il [rifugio](https://www.esempio.it) con anticipo
 
 ## Dettagli
 
 - **Distanza:** …
 ```
 
+- `titolo` va tra virgolette doppie se contiene `:` o `#`
+  (`titolo: "Parigi: fiera del mobile"`). Nel dubbio, mettile sempre.
 - `dal` e `al` sono nel formato `AAAA-MM-GG`. Per un viaggio di un giorno
   solo basta `dal`.
+- Se l'intestazione ha un errore, GitHub non pubblica e nella scheda
+  **Actions** dice quale file correggere: il sito online resta quello di prima.
 - I giorni li conta il sito (estremi compresi), e il viaggio finisce da solo
   nell'elenco e nel menu.
 - `tipo` è `lavoro` o `ferie`; compare sotto il titolo del viaggio.
 - Le sezioni sono un'abitudine, non un obbligo: si possono togliere, cambiare
   o aggiungerne altre con `## Titolo`.
+- Un indirizzo diventa cliccabile scritto come `[testo](https://…)` oppure
+  tra `<` e `>`: da solo resta testo.
 
 Si può fare anche dal telefono: su github.com apri la cartella `_viaggi`,
 **Add file → Create new file**, scrivi e salva.
 
 ### Foto
 
-Metti le foto in `assets/foto/` e richiamale così dal file del viaggio:
+Carica le foto nella cartella `assets/foto/` (su github.com: entra nella
+cartella, poi **Add file → Upload files**) e richiamale così dal file del
+viaggio:
 
 ```markdown
 ![Il rifugio al tramonto](../../assets/foto/rifugio.jpg)
@@ -123,7 +132,8 @@ del repository:
 jekyll serve
 ```
 
-e apri `http://localhost:4000`.
+e apri `http://localhost:4000`. La cartella `_site/` che compare è solo
+l'anteprima e non finisce nei commit.
 
 ---
 

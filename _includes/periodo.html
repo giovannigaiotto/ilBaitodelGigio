@@ -2,6 +2,7 @@
   "7–9 aprile 2023", "26 luglio – 3 agosto 2026", "28 dicembre 2025 – 3 gennaio 2026"
   {% include periodo.html dal=inizio al=fine %}   (al è facoltativo)
 {%- endcomment -%}
+{%- if include.dal -%}
 {%- assign mesi_lunghi = "gennaio febbraio marzo aprile maggio giugno luglio agosto settembre ottobre novembre dicembre" | split: " " -%}
 {%- assign p_b = include.al | default: include.dal -%}
 {%- assign p_ga = include.dal | date: "%-d" -%}
@@ -18,4 +19,5 @@
   {{- p_ga }}–{{ p_gb }} {{ mesi_lunghi[p_ma] }} {{ p_ya -}}
 {%- else -%}
   {{- p_ga }} {{ mesi_lunghi[p_ma] }} {{ p_ya -}}
+{%- endif -%}
 {%- endif -%}

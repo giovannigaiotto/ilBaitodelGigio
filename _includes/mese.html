@@ -1,4 +1,6 @@
 {%- comment -%} "apr 2023" — {% include mese.html d=data %} {%- endcomment -%}
+{%- if include.d -%}
 {%- assign mesi_brevi = "gen feb mar apr mag giu lug ago set ott nov dic" | split: " " -%}
 {%- assign m_i = include.d | date: "%-m" | minus: 1 -%}
 {{- mesi_brevi[m_i] }} {{ include.d | date: "%Y" -}}
+{%- endif -%}

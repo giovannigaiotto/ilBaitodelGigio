@@ -1,5 +1,5 @@
 {%- assign root = page.root | default: "./" -%}
-{%- assign elenco = site.viaggi | sort: "dal" | reverse -%}
+{%- include elenco.html -%}
 <!doctype html>
 <html lang="it">
 <head>
@@ -23,7 +23,7 @@
 <a class="salta" href="#contenuto">Vai al contenuto</a>
 
 <header class="testata">
-  <a class="casa" href="{{ root }}" aria-label="Home"{% if page.url == "/" %} aria-current="page"{% endif %}>
+  <a class="casa" href="{{ root }}"{% if page.url == "/" %} aria-current="page"{% endif %}>
     <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
       <rect class="casa__porta" x="10" y="15" width="4" height="5.5" stroke="none"></rect>
       <path d="M2.5 11.5 12 3.6l9.5 7.9M5 9.5v11h14v-11M15.6 6.5V3.8h2.3v4.6M10 20.5V15h4v5.5"></path>
@@ -46,7 +46,7 @@
       <span class="menu__righe" aria-hidden="true"><i></i><i></i><i></i></span>
     </summary>
     <nav class="tendina" aria-label="Menu">
-      <a class="tendina__home" href="{{ root }}">Home</a>
+      <a class="tendina__home" href="{{ root }}"{% if page.url == "/" %} aria-current="page"{% endif %}>Home</a>
 
       <p class="tendina__titolo">Viaggi</p>
       <ul class="tendina__viaggi">
