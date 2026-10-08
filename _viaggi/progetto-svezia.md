@@ -1,8 +1,8 @@
 ---
 titolo: Progetto Svezia
-dal: 2025-03-14
-al: 2025-03-17
-tipo: lavoro
+dal: 2025-11-01
+al: 2025-11-05
+tipo: compleanno
 ---
 
 ## Tappe
