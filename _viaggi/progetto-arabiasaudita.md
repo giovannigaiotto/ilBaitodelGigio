@@ -1,7 +1,7 @@
 ---
-titolo: Riveder le stelle
-dal: 2026-07-26
-al: 2026-08-03
+titolo: Progetto Arabia Saudita
+dal: 2026-02-15
+al: 2026-03-28
 tipo: ferie
 ---
 
