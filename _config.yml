@@ -1,0 +1,40 @@
+# il Baito del Gigio — quaderno dei viaggi
+# Dopo aver modificato questo file, GitHub Pages ripubblica da solo.
+
+title: il Baito del Gigio
+lang: it
+theme: null   # nessun tema di GitHub: grafica tutta in assets/
+
+# Un errore nell'intestazione di un viaggio ferma la pubblicazione e dice quale
+# file correggere, invece di mettere online un viaggio vuoto.
+strict_front_matter: true
+
+# Contatti nel menu. Lascia vuoto ("") per nascondere una voce.
+contatti:
+  linkedin: https://www.linkedin.com/in/giovanni-gaiotto-353bb0270/
+  instagram: https://www.instagram.com/   # <- metti il tuo profilo, es. https://www.instagram.com/nomeutente/
+  email: gaiottogiovanni2004@gmail.com
+
+# Ogni file in _viaggi/ diventa una pagina in /viaggi/<nome-file>/
+collections:
+  viaggi:
+    output: true
+    permalink: /viaggi/:name/
+
+defaults:
+  - scope:
+      type: viaggi
+    values:
+      layout: viaggio
+      root: "../../"
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+  smart_quotes: ["rsquo", "rsquo", "ldquo", "rdquo"]   # 'l, 'mperador, anni '90: sempre apostrofo
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock

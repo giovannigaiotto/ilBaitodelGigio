@@ -1,0 +1,17 @@
+---
+layout: default
+---
+{% include giorni.html v=page -%}
+<article class="viaggio">
+  <a class="indietro" href="{{ page.root }}">&larr; I miei viaggi</a>
+  <h1 class="titolo">{{ page.titolo }}</h1>
+  <p class="viaggio__meta">
+    <time datetime="{{ page.dal | date: '%Y-%m-%d' }}">{% include periodo.html dal=page.dal al=page.al %}</time>
+    · {{ giorni }} {% if giorni == 1 %}giorno{% else %}giorni{% endif %}
+    {%- if page.tipo %} · {{ page.tipo }}{% endif %}
+  </p>
+
+  <div class="testo">
+{{ content }}
+  </div>
+</article>

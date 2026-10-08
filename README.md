@@ -1,86 +1,156 @@
-# Portfolio — Giovanni Gaiotto
+# il Baito del Gigio
 
-Sito statico, una pagina sola. Nessun framework, nessuna build, nessun tracker.
-
-Al momento la pagina contiene solo tre cose: l'introduzione, il blocco delle
-variabili dichiarate e i contatti. Il resto (foto dei display, sezioni di
-lavoro) è stato tolto e si aggiunge più avanti.
+Quaderno dei viaggi online: una pagina con l'elenco dei viaggi e una pagina per
+ogni viaggio. Lo pubblica GitHub Pages con Jekyll, che è già incluso: non serve
+installare niente, basta scrivere i file e fare il push.
 
 ```
-index.html                       struttura e contenuti
-assets/style.css                 design system (tema chiaro + scuro)
-assets/hmi.js                    tema, comparsa allo scroll, freccia "torna su"
-assets/hmi/winch-display.webp    foto dell'argano — nel repository, non usata
-.nojekyll                        dice a GitHub Pages di servire i file così come sono
+index.html               la home: titolo, introduzione, elenco dei viaggi
+_viaggi/                 un file .md per ogni viaggio  ← qui si scrive
+_config.yml              nome del sito e contatti del menu
+_layouts/                lo scheletro delle pagine
+_includes/               date in italiano e conteggio dei giorni
+assets/quaderno.css      colori, font, impaginazione (giorno e notte)
+assets/quaderno.js       tema giorno/notte, menu, ordine dell'elenco
+assets/fonts/            Kalam e Alegreya, con la loro licenza (SIL OFL)
+assets/baito.svg         l'icona nella scheda del browser
+assets/foto/              le foto dei viaggi
 ```
 
-La foto dell'argano resta nel repository ma non è più richiamata dalla pagina:
-è pronta per quando si ricostruisce la sezione lavori.
+I cinque viaggi che ci sono adesso sono segnaposto: nomi e testi dalla
+*Divina Commedia*, prezzi e numeri dalle cifre del π. Si cancellano quando
+arrivano quelli veri.
 
 ---
 
-## 1. Pubblicare su GitHub Pages
+## Aggiungere un viaggio
 
-### Opzione A — sito principale (URL più pulito)
+Crea un file in `_viaggi/`, per esempio `_viaggi/dolomiti-2026.md`. Il nome
+del file diventa l'indirizzo: `…/viaggi/dolomiti-2026/`. Usa solo minuscole,
+numeri e trattini.
 
-Crea un repository chiamato `<tuo-username>.github.io` e fai il push su `main`.
-Il sito sarà su `https://<tuo-username>.github.io` in un paio di minuti, senza
-toccare nessuna impostazione.
+```markdown
+---
+titolo: "Dolomiti"
+dal: 2026-09-12
+al: 2026-09-15
+tipo: ferie
+---
 
-### Opzione B — repository normale
+## Tappe
 
-Push su `main`, poi **Settings → Pages → Build and deployment**,
-*Source: Deploy from a branch*, *Branch: `main`*, cartella `/ (root)`.
-L'indirizzo sarà `https://<tuo-username>.github.io/<nome-repo>/`.
+1. Prima tappa
+2. Seconda tappa
 
-Dopo il primo giro basta `git push`: Pages ripubblica da solo.
+## Aneddoti
+
+Testo libero.
+
+> Nelle citazioni gli a capo restano dove li metti,
+> comodo per poesie e frasi copiate.
+
+## Mi è piaciuto
+
+- …
+
+## Non mi è piaciuto
+
+- …
+
+## Prezzi
+
+| Voce | Prezzo |
+| --- | ---: |
+| Rifugio | 60,00 € |
+| **Totale** | **60,00 €** |
+
+## Consigli
+
+- Prenotare il [rifugio](https://www.esempio.it) con anticipo
+
+## Dettagli
+
+- **Distanza:** …
+```
+
+- `titolo` va tra virgolette doppie se contiene `:` o `#`
+  (`titolo: "Parigi: fiera del mobile"`). Nel dubbio, mettile sempre.
+- `dal` e `al` sono nel formato `AAAA-MM-GG`. Per un viaggio di un giorno
+  solo basta `dal`.
+- Se l'intestazione ha un errore, GitHub non pubblica e nella scheda
+  **Actions** dice quale file correggere: il sito online resta quello di prima.
+- I giorni li conta il sito (estremi compresi), e il viaggio finisce da solo
+  nell'elenco e nel menu.
+- `tipo` è `lavoro` o `ferie`; compare sotto il titolo del viaggio.
+- Le sezioni sono un'abitudine, non un obbligo: si possono togliere, cambiare
+  o aggiungerne altre con `## Titolo`.
+- Un indirizzo diventa cliccabile scritto come `[testo](https://…)` oppure
+  tra `<` e `>`: da solo resta testo.
+
+Si può fare anche dal telefono: su github.com apri la cartella `_viaggi`,
+**Add file → Create new file**, scrivi e salva.
+
+### Foto
+
+Carica le foto nella cartella `assets/foto/` (su github.com: entra nella
+cartella, poi **Add file → Upload files**) e richiamale così dal file del
+viaggio:
+
+```markdown
+![Il rifugio al tramonto](../../assets/foto/rifugio.jpg)
+```
+
+Meglio JPG o WebP larghi al massimo 1600 px: pesano poco e si vedono bene.
 
 ---
 
-## 2. Guardarlo in locale
+## Contatti
 
-Basta aprire `index.html` col browser. Oppure, identico a Pages:
+In `_config.yml`, alla voce `contatti`. **Instagram va completato** con il
+tuo profilo (`https://www.instagram.com/nomeutente/`). Una voce lasciata vuota
+(`""`) sparisce dal menu.
+
+---
+
+## Pubblicazione
+
+**Settings → Pages → Build and deployment**: *Source: Deploy from a branch*,
+*Branch: `main`*, cartella `/ (root)`. Dopo ogni push GitHub ricostruisce il
+sito in un minuto o due; se qualcosa non va, l'errore compare nella scheda
+**Actions** (`pages build and deployment`).
+
+L'indirizzo è `https://giovannigaiotto.github.io/<nome-repository>/`: tutti i
+collegamenti del sito sono relativi, quindi funzionano con qualsiasi nome del
+repository.
+
+### Vederlo in locale (facoltativo)
+
+Serve Ruby. Una volta sola: `gem install github-pages`. Poi, dalla cartella
+del repository:
 
 ```bash
-python -m http.server 8321
+jekyll serve
 ```
+
+e apri `http://localhost:4000`. La cartella `_site/` che compare è solo
+l'anteprima e non finisce nei commit.
 
 ---
 
-## 3. Note
+## Grafica
 
-**Linguaggio visivo.** Preso dall'editor CODESYS, ma solo per quello che lì
-funziona: fondo bianco, monospaziato come font principale, la logica cromatica
-del syntax highlighting (parole chiave blu `#1A46C7`, commenti verde `#0E7A3C`
-in corsivo). Lasciati fuori i grigi sporchi, i bordi in rilievo e le toolbar
-affollate. Due elementi ripresi dall'IDE: il blocco `VAR_GLOBAL` dell'hero e la
-status bar in fondo alla pagina.
+**Colori.** Tutti in cima a `assets/quaderno.css`, con nomi parlanti:
+`--carta`, `--inchiostro`, `--cuoio`, `--legno`, `--brace`. Due serie: giorno
+(carta chiara, inchiostro seppia) e notte (legno scuro, pergamena, braci).
+Il contrasto del testo rispetta il livello AA in tutti e due i temi.
 
-Tutti i colori stanno nelle variabili CSS in cima a `style.css`: per cambiare
-tono al sito basta toccare quel blocco.
+**Font.** *Kalam*, una scrittura a penna, per i titoli e i nomi dei viaggi;
+*Alegreya*, un carattere da libro, per il testo. Sono nel repository e non
+vengono scaricati da Google: niente chiamate esterne, nessun tracker.
 
-**Font.** JetBrains Mono (titoli e codice) e IBM Plex Sans (testo corrente),
-da Google Fonts.
+**Giorno e notte.** Di base il sito segue il tema del telefono o del
+computer. Il tasto con la luna/il sole lo cambia a mano e la scelta viene
+ricordata.
 
-**Temi.** Chiaro di default, scuro automatico se il sistema lo richiede, più un
-interruttore in alto a destra che ha la precedenza e viene ricordato.
-
-**Nessuna icona di scheda.** Il `<link rel="icon" href="data:,">` serve a
-lasciare vuota la linguetta del browser invece di mostrare un'icona qualsiasi.
-
-**Accessibilità.** Contrasto AA in entrambi i temi, animazioni spente con
-`prefers-reduced-motion`, la freccia "torna su" esce dal flusso di tabulazione
-finché non è visibile.
-
----
-
-## 4. Riprendere quello che è stato tolto
-
-Niente è perso: le schermate dell'argano, le sezioni di lavoro e il sistema di
-design stanno nella storia di git.
-
-```bash
-git log --oneline            # trova il commit
-git show <commit>:index.html # guarda com'era
-git show 028b49a:assets/hmi/menu.webp > menu.webp   # recupera una foto
-```
+**Senza JavaScript** il sito funziona lo stesso: il menu si apre, l'elenco
+resta in ordine di data (manca solo il riordino e il tasto del tema).

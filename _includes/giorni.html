@@ -1,0 +1,12 @@
+{%- comment -%}
+  Conta i giorni di un viaggio, estremi compresi: {% include giorni.html v=viaggio %} → {{ giorni }}
+  Imposta anche {{ dal_s }} (inizio in secondi), usato per ordinare.
+  Il +43200 (mezza giornata) assorbe l'ora in più o in meno del cambio d'ora.
+{%- endcomment -%}
+{%- assign dal_s = include.v.dal | date: "%s" | plus: 0 -%}
+{%- if include.v.al -%}
+  {%- assign al_s = include.v.al | date: "%s" | plus: 0 -%}
+{%- else -%}
+  {%- assign al_s = dal_s -%}
+{%- endif -%}
+{%- assign giorni = al_s | minus: dal_s | plus: 43200 | divided_by: 86400 | plus: 1 -%}

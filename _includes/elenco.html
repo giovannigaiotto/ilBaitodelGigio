@@ -1,0 +1,8 @@
+{%- comment -%}
+  Tutti i viaggi, dal più recente: {% include elenco.html %} → {{ elenco }}
+  Le date passano tutte da "date:" prima del confronto, così una data scritta
+  tra virgolette ("2026-09-12") o senza zeri (2026-9-12) non blocca il sito.
+{%- endcomment -%}
+{%- assign gruppi = site.viaggi | group_by_exp: "v", "v.dal | date: '%Y-%m-%d'" | sort: "name" | reverse -%}
+{%- assign elenco = "" | split: "" -%}
+{%- for g in gruppi -%}{%- assign elenco = elenco | concat: g.items -%}{%- endfor -%}
