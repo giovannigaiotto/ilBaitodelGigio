@@ -1,7 +1,6 @@
 ---
-titolo: Selva oscura
-dal: 2023-04-07
-al: 2023-04-09
+titolo: Progetto Dubai
+data: 2025-09-07
 tipo: ferie
 ---
 
