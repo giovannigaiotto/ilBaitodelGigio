@@ -3,15 +3,32 @@ layout: default
 ---
 {% include giorni.html v=page -%}
 <article class="viaggio">
-  <a class="indietro" href="{{ page.root }}">&larr; I miei viaggi</a>
-  <h1 class="titolo">{{ page.titolo }}</h1>
-  <p class="viaggio__meta">
-    <time datetime="{{ page.dal | date: '%Y-%m-%d' }}">{% include periodo.html dal=page.dal al=page.al %}</time>
-    · {{ giorni }} {% if giorni == 1 %}giorno{% else %}giorni{% endif %}
-    {%- if page.tipo %} · {{ page.tipo }}{% endif %}
-  </p>
+  <a class="indietro" href="{{ page.root }}"><svg viewBox="0 0 16 16" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 8H2.5M7 3.5 2.5 8 7 12.5"></path></svg>I miei viaggi</a>
 
+  <header class="apertura">
+    <h1 class="titolo">{{ page.titolo }}</h1>
+    <p class="viaggio__meta">
+      <time datetime="{{ page.dal | date: '%Y-%m-%d' }}">{% include periodo.html dal=page.dal al=page.al %}</time>
+      · {{ giorni }} {% if giorni == 1 %}giorno{% else %}giorni{% endif %}
+      {%- if page.tipo %} · {{ page.tipo }}{% endif %}
+    </p>
+  </header>
+
+  {%- comment -%}
+    Ogni titolo "##" apre una sezione: sullo schermo largo le sezioni si
+    affiancano come i pezzi di una pagina di giornale.
+  {%- endcomment -%}
+  {%- assign parti = content | split: "<h2" %}
   <div class="testo">
-{{ content }}
+    {%- for parte in parti -%}
+      {%- if forloop.first -%}
+        {%- assign inizio = parte | strip -%}
+        {%- if inizio != "" %}
+    <section class="sezione sezione--apertura">{{ parte }}</section>
+        {%- endif -%}
+      {%- else %}
+    <section class="sezione"><h2{{ parte }}</section>
+      {%- endif -%}
+    {%- endfor %}
   </div>
 </article>

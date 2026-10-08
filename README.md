@@ -12,7 +12,7 @@ _layouts/                lo scheletro delle pagine
 _includes/               date in italiano e conteggio dei giorni
 assets/quaderno.css      colori, font, impaginazione (giorno e notte)
 assets/quaderno.js       tema giorno/notte, menu, ordine dell'elenco
-assets/fonts/            Kalam e Alegreya, con la loro licenza (SIL OFL)
+assets/fonts/            Special Elite e Courier Prime, con le loro licenze
 assets/baito.svg         l'icona nella scheda del browser
 assets/foto/              le foto dei viaggi
 ```
@@ -144,9 +144,17 @@ l'anteprima e non finisce nei commit.
 (carta chiara, inchiostro seppia) e notte (legno scuro, pergamena, braci).
 Il contrasto del testo rispetta il livello AA in tutti e due i temi.
 
-**Font.** *Kalam*, una scrittura a penna, per i titoli e i nomi dei viaggi;
-*Alegreya*, un carattere da libro, per il testo. Sono nel repository e non
+**Font.** *Special Elite*, una macchina da scrivere con l'inchiostro
+irregolare, per i titoli e i nomi dei viaggi; *Courier Prime*, un
+dattiloscritto pulito e leggibile, per il testo. Sono nel repository e non
 vengono scaricati da Google: niente chiamate esterne, nessun tracker.
+
+**Impaginazione.** Sul computer la pagina usa tutta la larghezza dello
+schermo: titolo e presentazione affiancati, elenco dei viaggi in colonne
+come l'indice di un giornale, e nella pagina di un viaggio le sezioni (una
+per ogni `##`) affiancate come i pezzi di una pagina di giornale. Una
+sezione con una foto prende tutta la riga. Sul telefono tutto torna in una
+colonna sola.
 
 **Giorno e notte.** Di base il sito segue il tema del telefono o del
 computer. Il tasto con la luna/il sole lo cambia a mano e la scelta viene
